@@ -4,7 +4,7 @@ class IncomeCategoriesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @income_categories = IncomeCategory.where("account_id = #{current_account.id}")
+    @income_categories = IncomeCategory.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
   end
 
   def show
@@ -17,7 +17,7 @@ class IncomeCategoriesController < ApplicationController
   end
 
   def create
-    @income_categories = IncomeCategory.where("account_id = #{current_account.id}")
+    @income_categories = IncomeCategory.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @income_category = IncomeCategory.create(income_category_params)
   end
 
@@ -26,7 +26,7 @@ class IncomeCategoriesController < ApplicationController
   end
 
   def update
-    @income_categories = IncomeCategory.where("account_id = #{current_account.id}")
+    @income_categories = IncomeCategory.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @income_category = IncomeCategory.find(params[:id])
     @income_category.update_attributes(income_category_params)
   end
@@ -36,7 +36,7 @@ class IncomeCategoriesController < ApplicationController
   end
 
   def destroy
-    @income_categories = IncomeCategory.where("account_id = #{current_account.id}")
+    @income_categories = IncomeCategory.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @income_category = IncomeCategory.find(params[:id])
     @income_category.destroy
   end
