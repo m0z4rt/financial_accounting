@@ -15,8 +15,6 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass'
 # Use will_paginate for pagination
 gem 'will_paginate-bootstrap'
-# Use Union for Active Record
-gem 'active_record_union'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
