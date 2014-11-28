@@ -4,7 +4,7 @@ class IncomesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @incomes = Income.where("account_id = #{current_account.id}")
+    @incomes = Income.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @total_incomes = Income.where("account_id = #{current_account.id}").sum(:income)
   end
 
@@ -18,7 +18,7 @@ class IncomesController < ApplicationController
   end
 
   def create
-    @incomes = Income.where("account_id = #{current_account.id}")
+    @incomes = Income.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @income = Income.create(income_params)
     @total_incomes = Income.where("account_id = #{current_account.id}").sum(:income)
   end
@@ -28,7 +28,7 @@ class IncomesController < ApplicationController
   end
 
   def update
-    @incomes = Income.where("account_id = #{current_account.id}")
+    @incomes = Income.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @income = Income.find(params[:id])
     @income.update_attributes(income_params)
     @total_incomes = Income.where("account_id = #{current_account.id}").sum(:income)
@@ -39,7 +39,7 @@ class IncomesController < ApplicationController
   end
 
   def destroy
-    @incomes = Income.where("account_id = #{current_account.id}")
+    @incomes = Income.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @income = Income.find(params[:id])
     @income.destroy
     @total_incomes = Income.where("account_id = #{current_account.id}").sum(:income)

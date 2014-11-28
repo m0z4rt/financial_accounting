@@ -6,5 +6,6 @@ $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
 <% else %>
 $(".income-index").html("<%= escape_javascript(render 'index') %>")
 $(".total-incomes").html("<%= escape_javascript(render 'total_incomes') %>")
+$(".paging").html("<%= escape_javascript(render 'paging') %>")
 $("#income-modal").modal("hide")
 <% end %>

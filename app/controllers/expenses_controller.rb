@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @expenses = Expense.where("account_id = #{current_account.id}")
+    @expenses = Expense.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @total_expenses = Expense.where("account_id = #{current_account.id}").sum(:expense)
   end
 
@@ -18,7 +18,7 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expenses = Expense.where("account_id = #{current_account.id}")
+    @expenses = Expense.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @expense = Expense.create(expense_params)
     @total_expenses = Expense.where("account_id = #{current_account.id}").sum(:expense)
   end
@@ -28,7 +28,7 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    @expenses = Expense.where("account_id = #{current_account.id}")
+    @expenses = Expense.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @expense = Expense.find(params[:id])
     @expense.update_attributes(expense_params)
     @total_expenses = Expense.where("account_id = #{current_account.id}").sum(:expense)
@@ -39,7 +39,7 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
-    @expenses = Expense.where("account_id = #{current_account.id}")
+    @expenses = Expense.where("account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @expense = Expense.find(params[:id])
     @expense.destroy
     @total_expenses = Expense.where("account_id = #{current_account.id}").sum(:expense)
