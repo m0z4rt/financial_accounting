@@ -1,0 +1,9 @@
+$("ul.errors").html("")
+<% if @income_category.errors.any? %>
+<% @income_category.errors.full_messages.each do |message| %>
+$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+<% end %>
+<% else %>
+$(".category-index").html("<%= escape_javascript(render 'index') %>")
+$("#category-modal").modal("hide")
+<% end %>

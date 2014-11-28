@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  expense: 9.99
+  account_id: 
+  expense_category_id: 
+
+two:
+  name: MyString
+  expense: 9.99
+  account_id: 
+  expense_category_id: 

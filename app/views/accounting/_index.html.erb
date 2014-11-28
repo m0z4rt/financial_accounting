@@ -1,0 +1,8 @@
+<% @records.each do |record| %>
+    <tr>
+      <td><%= record.name %></td>
+      <td><%= number_to_currency record.record %></td>
+      <td><%= record.created_at.strftime("%Y.%m.%d %H:%M") %></td>
+      <td><%= record.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
+    </tr>
+<% end %>

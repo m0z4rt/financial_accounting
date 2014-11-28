@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="well well-sm">
+    <%= link_to "New Income", new_income_path, remote: true, class: "btn btn-primary" %>
+  </div>
+  <div class="new-income"></div>
+  <table class="table table-bordered table-striped table-hover table-condensed">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Income</th>
+      <th>Created</th>
+      <th>Last updated</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    </thead>
+    <tbody class="income-index">
+    <%= render "index" %>
+    </tbody>
+  </table>
+  <div class="total-incomes">
+    <%= render "total_incomes" %>
+  </div>
+</div>
+<div id="income-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div id="inner-income-modal" class="modal-content"></div>
+  </div>
+</div>

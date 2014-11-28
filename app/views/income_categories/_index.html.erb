@@ -1,0 +1,7 @@
+<% @income_categories.each do |income_category| %>
+    <tr>
+      <td><%= income_category.name %></td>
+      <td><%= link_to "Edit", edit_income_category_path(income_category), remote: true, class: "btn btn-default btn-xs" %></td>
+      <td><%= link_to "Delete", income_category_delete_path(income_category), remote: true, class: "btn btn-danger btn-xs" %></td>
+    </tr>
+<% end %>
