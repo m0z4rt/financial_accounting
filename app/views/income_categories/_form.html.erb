@@ -1,15 +1,15 @@
-<%= form_for @income_category, remote: true, html: { class: "form-horizontal" } do |f| %>
+<%= form_for @income_category, remote: true, html: {class: "form-horizontal"} do |f| %>
     <div class="modal-body">
-    <div class="form-group">
-      <%= f.label :name, class:"control-label col-sm-2" %>
-      <div class="col-sm-9">
-        <%= f.text_field :name, class: "form-control" %>
-        <%= f.hidden_field :account_id %>
+      <div class="form-group">
+        <%= f.label :name, class: "control-label col-sm-2" %>
+        <div class="col-sm-9">
+          <%= f.text_field :name, class: "form-control" %>
+          <%= f.hidden_field :account_id %>
+        </div>
       </div>
     </div>
-      </div>
     <div class="modal-footer">
-        <%= f.submit class: "btn btn-default" %>
-        <%= link_to "Cancel", "#", class: "btn btn-danger", data: {dismiss: "modal"} %>
+      <%= f.submit class: "btn btn-default" %>
+      <%= link_to "Cancel", "#", class: "btn btn-danger", data: {dismiss: "modal"} %>
     </div>
 <% end %>

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>The Best "Financial accounting" App</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
@@ -16,13 +16,14 @@
       <a class="navbar-brand" href="/">tBFA</a>
     </div>
     <div class="collapse navbar-collapse">
-    <% if account_signed_in? %>
+      <% if account_signed_in? %>
           <ul class="nav navbar-nav">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Incomes", incomes_path %></li>
             <li><%= link_to "Expenses", expenses_path %></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Categories <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Categories
+                <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Incomes", income_categories_path %></li>
                 <li><%= link_to "Expenses", expense_categories_path %></li>
@@ -33,7 +34,7 @@
             <li><%= link_to "Sign out", destroy_account_session_path, :method => :delete %></li>
           </ul>
           <p class="navbar-text navbar-right">Signed in as <%= current_account.email %>.</p>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </header>
