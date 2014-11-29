@@ -2,6 +2,8 @@
   <div class="well well-sm">
     <%= link_to "New Income", new_income_path, remote: true, class: "btn btn-primary" %>
     <%= link_to "New Expense", new_expense_path, remote: true, class: "btn btn-primary" %>
+    <%= link_to "New Income Category", new_income_category_path, remote: true, class: "btn btn-primary" %>
+    <%= link_to "New Expense Category", new_expense_category_path, remote: true, class: "btn btn-primary" %>
   </div>
   <div class="new-record"></div>
   <table class="table table-bordered table-striped table-hover table-condensed">
@@ -9,12 +11,13 @@
     <tr>
       <th>Name</th>
       <th>Record</th>
+      <th>Category</th>
       <th>Created</th>
       <th>Last updated</th>
     </tr>
     </thead>
-    <tbody class="records-index">
-    <%= render "index" %>
+    <tbody class="records-show">
+    <%= render "show_records" %>
     </tbody>
   </table>
   <div class="balance">
@@ -32,5 +35,10 @@
 <div id="expense-modal" class="modal fade">
   <div class="modal-dialog">
     <div id="inner-expense-modal" class="modal-content"></div>
+  </div>
+</div>
+<div id="category-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div id="inner-category-modal" class="modal-content"></div>
   </div>
 </div>

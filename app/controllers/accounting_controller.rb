@@ -5,11 +5,13 @@ class AccountingController < ApplicationController
 
   def index
     sql_record = "
-        SELECT expenses.name, expenses.expense AS record, expenses.created_at, expenses.updated_at, expenses.record_type
+        SELECT expenses.name, expenses.expense AS record, expenses.created_at, expenses.updated_at,
+        expenses.record_type, expenses.expense_category_id AS category_id
         FROM expenses
         WHERE expenses.account_id = #{current_account.id}
         UNION
-        SELECT incomes.name, incomes.income, incomes.created_at, incomes.updated_at, incomes.record_type
+        SELECT incomes.name, incomes.income, incomes.created_at, incomes.updated_at, incomes.record_type,
+        incomes.income_category_id
         FROM incomes
         WHERE incomes.account_id = #{current_account.id}
         ORDER BY updated_at DESC"
