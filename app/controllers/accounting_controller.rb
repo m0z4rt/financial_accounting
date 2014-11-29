@@ -8,7 +8,7 @@ class AccountingController < ApplicationController
         SELECT incomes.name, incomes.income AS record, incomes.created_at, incomes.updated_at,
         incomes.record_type, income_categories.name AS Category
         FROM incomes
-        INNER JOIN
+        LEFT OUTER JOIN
         income_categories
         ON incomes.income_category_id = income_categories.id
         WHERE incomes.account_id = #{current_account.id}
@@ -16,7 +16,7 @@ class AccountingController < ApplicationController
         SELECT expenses.name, expenses.expense AS record, expenses.created_at, expenses.updated_at,
         expenses.record_type, expense_categories.name AS Category
         FROM expenses
-        INNER JOIN
+        LEFT OUTER JOIN
         expense_categories
         ON expenses.expense_category_id = expense_categories.id
         WHERE expenses.account_id = #{current_account.id}
