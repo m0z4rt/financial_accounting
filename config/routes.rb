@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  default_url_options :host => "financial-accounting.herokuapp.com"
-
   devise_for :accounts
   resources :accounting
   resources :expenses do
