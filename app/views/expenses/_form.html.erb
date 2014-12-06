@@ -1,30 +1,13 @@
-<%= form_for @expense, remote: true, html: { class: "form-horizontal" } do |f| %>
+<%= bootstrap_form_for @expense, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8", remote: true do |f| %>
     <div class="modal-body">
-    <div class="form-group">
-      <%= f.label :name, class:"control-label col-sm-2" %>
-      <div class="col-sm-9">
-        <%= f.text_field :name, class: "form-control" %>
-        <%= f.hidden_field :account_id %>
-        <%= f.hidden_field :record_type, :value => "expense" %>
-      </div>
+      <%= f.text_field :name %>
+      <%= f.hidden_field :account_id %>
+      <%= f.hidden_field :record_type, :value => "expense" %>
+      <%= f.text_field :expense, prepend: "$" %>
+      <%= f.collection_select :expense_category_id, ExpenseCategory.where("account_id = #{current_account.id}"), :id, :name %>
     </div>
-      <div class="form-group">
-        <%= f.label :expense, class:"control-label col-sm-2" %>
-        <div class="col-sm-9">
-          <%= f.text_field :expense, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :expense_category, class:"control-label col-sm-3" %>
-        <div class="col-sm-8">
-          <div class="dropdown">
-          <%= f.collection_select :expense_category_id, ExpenseCategory.where("account_id = #{current_account.id}"), :id, :name %>
-            </div>
-        </div>
-      </div>
-      </div>
     <div class="modal-footer">
-        <%= f.submit class: "btn btn-default" %>
-        <%= link_to "Cancel", "#", class: "btn btn-danger", data: {dismiss: "modal"} %>
+      <%= f.primary %>
+      <%= link_to "Cancel", "#", class: "btn btn-danger", data: {dismiss: "modal"} %>
     </div>
 <% end %>

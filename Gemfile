@@ -13,6 +13,9 @@ gem 'devise'
 # Use SCSS and Bootstrap for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass'
+gem 'bootstrap_form'
+# Use certified to verify SSL certificates and provides certificate bundle in case OpenSSL cannot find one
+gem 'certified'
 # Use will_paginate for pagination
 gem 'will_paginate-bootstrap'
 # Use Uglifier as compressor for JavaScript assets
