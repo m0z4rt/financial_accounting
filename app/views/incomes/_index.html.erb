@@ -1,10 +1,23 @@
 <% @incomes.each do |income| %>
-    <tr>
-      <td><%= income.name %></td>
-      <td><%= number_to_currency income.income %></td>
-      <td><%= income.created_at.strftime("%Y.%m.%d %H:%M") %></td>
-      <td><%= income.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
-      <td><%= link_to "Edit", edit_income_path(income), remote: true, class: "btn btn-default btn-xs" %></td>
-      <td><%= link_to "Delete", income_delete_path(income), remote: true, class: "btn btn-danger btn-xs" %></td>
-    </tr>
+    <% if income.income_category_id != nil %>
+        <tr>
+          <td><%= income.name %></td>
+          <td><%= number_to_currency income.income %></td>
+          <td><%= income.income_category.name %></td>
+          <td><%= income.created_at.strftime("%Y.%m.%d %H:%M") %></td>
+          <td><%= income.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
+          <td><%= link_to "Edit", edit_income_path(income), remote: true, class: "btn btn-default btn-xs" %></td>
+          <td><%= link_to "Delete", income_delete_path(income), remote: true, class: "btn btn-danger btn-xs" %></td>
+        </tr>
+    <% elsif income.income_category_id == nil %>
+        <tr>
+          <td><%= income.name %></td>
+          <td><%= number_to_currency income.income %></td>
+          <td>No Category</td>
+          <td><%= income.created_at.strftime("%Y.%m.%d %H:%M") %></td>
+          <td><%= income.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
+          <td><%= link_to "Edit", edit_income_path(income), remote: true, class: "btn btn-default btn-xs" %></td>
+          <td><%= link_to "Delete", income_delete_path(income), remote: true, class: "btn btn-danger btn-xs" %></td>
+        </tr>
+    <% end %>
 <% end %>

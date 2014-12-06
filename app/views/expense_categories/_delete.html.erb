@@ -3,7 +3,7 @@
 </div>
 <div class="modal-body">
   <ul class="errors"></ul>
-  Are you sure you wish to delete <b><%= @expense_category.name %></b> category ?
+  Are you sure you wish to delete <b><%= @expense_category.name %></b> category ? All expenses associated will be DELETED!
 </div>
 <div class="modal-footer">
   <%= link_to "Yes, Delete This Category", expense_category_path(@expense_category), method: :delete, remote: true, class: "btn btn-danger" %>
