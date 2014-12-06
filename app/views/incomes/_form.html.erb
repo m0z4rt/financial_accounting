@@ -3,7 +3,7 @@
       <%= f.text_field :name %>
       <%= f.hidden_field :account_id %>
       <%= f.hidden_field :record_type, :value => "income" %>
-      <%= f.text_field :income, prepend: "$" %>
+      <%= f.text_field :income, prepend: "$", placeholder: "e.g. 10 or 10.15" %>
       <%= f.collection_select :income_category_id, IncomeCategory.where("account_id = #{current_account.id}"), :id, :name, :include_blank => true %>
     </div>
     <div class="modal-footer">
