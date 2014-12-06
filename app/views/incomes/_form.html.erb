@@ -18,7 +18,7 @@
         <%= f.label :income_category, class: "control-label col-sm-3" %>
         <div class="col-sm-8">
           <div class="dropdown">
-            <%= f.collection_select :income_category_id, IncomeCategory.where("account_id = #{current_account.id}"), :id, :name %>
+            <%= f.collection_select :income_category_id, IncomeCategory.where("account_id = #{current_account.id}"), :id, :name, :include_blank => true %>
           </div>
         </div>
       </div>
