@@ -1,15 +1,10 @@
-<%= form_for @expense_category, remote: true, html: {class: "form-horizontal"} do |f| %>
+<%= bootstrap_form_for @expense_category, layout: :horizontal, label_col: "col-sm-1", control_col: "col-sm-11", remote: true do |f| %>
     <div class="modal-body">
-      <div class="form-group">
-        <%= f.label :name, class: "control-label col-sm-2" %>
-        <div class="col-sm-9">
-          <%= f.text_field :name, class: "form-control" %>
-          <%= f.hidden_field :account_id %>
-        </div>
-      </div>
+      <%= f.text_field :name %>
+      <%= f.hidden_field :account_id %>
     </div>
     <div class="modal-footer">
-      <%= f.submit class: "btn btn-default" %>
+      <%= f.primary %>
       <%= link_to "Cancel", "#", class: "btn btn-danger", data: {dismiss: "modal"} %>
     </div>
 <% end %>
