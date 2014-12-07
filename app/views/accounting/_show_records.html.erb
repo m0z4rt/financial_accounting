@@ -2,7 +2,7 @@
     <% if record.record_type == "income" && record.category != nil %>
         <tr class="success">
           <td><%= record.name %></td>
-          <td><%= number_to_currency record.record %></td>
+          <td><%= number_to_currency record.record_value %></td>
           <td><%= record.category %></td>
           <td><%= record.created_at.strftime("%Y.%m.%d %H:%M") %></td>
           <td><%= record.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
@@ -10,7 +10,7 @@
     <% elsif record.record_type == "income" && record.category == nil %>
         <tr class="success">
           <td><%= record.name %></td>
-          <td><%= number_to_currency record.record %></td>
+          <td><%= number_to_currency record.record_value %></td>
           <td>No Category</td>
           <td><%= record.created_at.strftime("%Y.%m.%d %H:%M") %></td>
           <td><%= record.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
@@ -18,7 +18,7 @@
     <% elsif record.record_type == "expense" && record.category != nil %>
         <tr class="danger">
           <td><%= record.name %></td>
-          <td>- <%= number_to_currency record.record %></td>
+          <td>- <%= number_to_currency record.record_value %></td>
           <td><%= record.category %></td>
           <td><%= record.created_at.strftime("%Y.%m.%d %H:%M") %></td>
           <td><%= record.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
@@ -26,7 +26,7 @@
     <% elsif record.record_type == "expense" && record.category == nil %>
         <tr class="danger">
           <td><%= record.name %></td>
-          <td>- <%= number_to_currency record.record %></td>
+          <td>- <%= number_to_currency record.record_value %></td>
           <td>No Category</td>
           <td><%= record.created_at.strftime("%Y.%m.%d %H:%M") %></td>
           <td><%= record.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
