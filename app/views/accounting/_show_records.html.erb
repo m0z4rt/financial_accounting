@@ -6,6 +6,8 @@
           <td><%= record.category %></td>
           <td><%= record.created_at.strftime("%Y.%m.%d %H:%M") %></td>
           <td><%= record.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
+          <td><%= link_to "Edit", edit_income_path(record.record_id), remote: true, class: "btn btn-default btn-xs" %></td>
+          <td><%= link_to "Delete", income_delete_path(record.record_id), remote: true, class: "btn btn-danger btn-xs" %></td>
         </tr>
     <% elsif record.record_type == "income" && record.category == nil %>
         <tr class="success">
@@ -14,6 +16,8 @@
           <td>No Category</td>
           <td><%= record.created_at.strftime("%Y.%m.%d %H:%M") %></td>
           <td><%= record.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
+          <td><%= link_to "Edit", edit_income_path(record.record_id), remote: true, class: "btn btn-default btn-xs" %></td>
+          <td><%= link_to "Delete", income_delete_path(record.record_id), remote: true, class: "btn btn-danger btn-xs" %></td>
         </tr>
     <% elsif record.record_type == "expense" && record.category != nil %>
         <tr class="danger">
@@ -22,6 +26,8 @@
           <td><%= record.category %></td>
           <td><%= record.created_at.strftime("%Y.%m.%d %H:%M") %></td>
           <td><%= record.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
+          <td><%= link_to "Edit", edit_expense_path(record.record_id), remote: true, class: "btn btn-default btn-xs" %></td>
+          <td><%= link_to "Delete", expense_delete_path(record.record_id), remote: true, class: "btn btn-danger btn-xs" %></td>
         </tr>
     <% elsif record.record_type == "expense" && record.category == nil %>
         <tr class="danger">
@@ -30,6 +36,8 @@
           <td>No Category</td>
           <td><%= record.created_at.strftime("%Y.%m.%d %H:%M") %></td>
           <td><%= record.updated_at.strftime("%Y.%m.%d %H:%M") %></td>
+          <td><%= link_to "Edit", edit_expense_path(record.record_id), remote: true, class: "btn btn-default btn-xs" %></td>
+          <td><%= link_to "Delete", expense_delete_path(record.record_id), remote: true, class: "btn btn-danger btn-xs" %></td>
         </tr>
     <% end %>
 <% end %>
