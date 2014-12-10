@@ -3,12 +3,6 @@ class IncomesController < ApplicationController
   before_filter :authenticate_account!
   respond_to :html, :js
 
-  def index
-    @incomes = Income.where(
-        "account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15).order('updated_at DESC')
-    @total_incomes = Income.where("account_id = #{current_account.id}").sum(:income)
-  end
-
   def show
     @income = Income.find(params[:id])
   end
@@ -19,10 +13,11 @@ class IncomesController < ApplicationController
   end
 
   def create
-    @incomes = Income.where(
-        "account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15).order('updated_at DESC')
+    @records = Record.where(
+        "account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @income = Income.create(income_params)
     @total_incomes = Income.where("account_id = #{current_account.id}").sum(:income)
+    @total_expenses = Expense.where("account_id = #{current_account.id}").sum(:expense)
   end
 
   def edit
@@ -30,11 +25,12 @@ class IncomesController < ApplicationController
   end
 
   def update
-    @incomes = Income.where(
-        "account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15).order('updated_at DESC')
+    @records = Record.where(
+        "account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @income = Income.find(params[:id])
     @income.update_attributes(income_params)
     @total_incomes = Income.where("account_id = #{current_account.id}").sum(:income)
+    @total_expenses = Expense.where("account_id = #{current_account.id}").sum(:expense)
   end
 
   def delete
@@ -42,11 +38,12 @@ class IncomesController < ApplicationController
   end
 
   def destroy
-    @incomes = Income.where(
-        "account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15).order('updated_at DESC')
+    @records = Record.where(
+        "account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     @income = Income.find(params[:id])
     @income.destroy
     @total_incomes = Income.where("account_id = #{current_account.id}").sum(:income)
+    @total_expenses = Expense.where("account_id = #{current_account.id}").sum(:expense)
   end
 
   private

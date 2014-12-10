@@ -4,8 +4,8 @@ $("ul.errors").html("")
 $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
 <% end %>
 <% else %>
-$(".expense-index").html("<%= escape_javascript(render 'index') %>")
-$(".total-expenses").html("<%= escape_javascript(render 'total_expenses') %>")
-$(".paging").html("<%= escape_javascript(render 'paging') %>")
+$(".show-records").html("<%= escape_javascript(render 'accounting/show_records', collection: @records) %>")
+$(".balance").html("<%= escape_javascript(render 'accounting/balance') %>")
+$(".paging-records").html("<%= escape_javascript(render 'accounting/paging') %>")
 $("#expense-modal").modal("hide")
 <% end %>
