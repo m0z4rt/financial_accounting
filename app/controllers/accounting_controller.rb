@@ -13,10 +13,20 @@ class AccountingController < ApplicationController
       @records = Record.where(
           "account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
     end
+
+    if @records.blank?
+      @start_date = DateTime.now.strftime("%Y-%m-%d")
+    else
+      @start_date = Record.where("account_id = #{current_account.id}").minimum(:updated_at).strftime("%Y-%m-%d")
+    end
+    if @records.blank?
+      @end_date = DateTime.now.strftime("%Y-%m-%d")
+    else
+      @end_date = Record.where("account_id = #{current_account.id}").maximum(:updated_at).strftime("%Y-%m-%d")
+    end
+
     @total_incomes = Income.where("account_id = #{current_account.id}").sum(:income)
     @total_expenses = Expense.where("account_id = #{current_account.id}").sum(:expense)
-    @start_date = Record.where("account_id = #{current_account.id}").minimum(:updated_at).strftime("%Y-%m-%d")
-    @end_date = Record.where("account_id = #{current_account.id}").maximum(:updated_at).strftime("%Y-%m-%d")
   end
 
 end

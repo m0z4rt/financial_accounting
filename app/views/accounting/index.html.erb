@@ -7,9 +7,11 @@
     <%= form_tag('/accounting', :method => "get", id: "search-form", :class => "form-inline") do %>
         <div class="input-daterange input-group" id="datepicker">
           <span class="input-group-addon">From</span>
-          <%= text_field_tag :search_start_date, params[:search_start_date], :id => "datepicker", :value => @start_date, class: 'form-control' %>
+          <%= text_field_tag :search_start_date, params[:search_start_date], :id => "datepicker",
+                             :value => @start_date, class: 'form-control' %>
           <span class="input-group-addon">to</span>
-          <%= text_field_tag :search_end_date, params[:search_end_date], :id => "datepicker", :value => @end_date, class: 'form-control' %>
+          <%= text_field_tag :search_end_date, params[:search_end_date], :id => "datepicker",
+                             :value => @end_date, class: 'form-control' %>
         </div>
         <div class="input-group">
           <%= text_field_tag :search, params[:search], placeholder: "Name or category", class: 'form-control' %>

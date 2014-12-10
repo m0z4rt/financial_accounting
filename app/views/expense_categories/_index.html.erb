@@ -1,7 +1,13 @@
-<% @expense_categories.each do |expense_category| %>
-    <tr>
-      <td><%= expense_category.name %></td>
-      <td><%= link_to "Edit", edit_expense_category_path(expense_category), remote: true, class: "btn btn-default btn-xs" %></td>
-      <td><%= link_to "Delete", expense_category_delete_path(expense_category), remote: true, class: "btn btn-danger btn-xs" %></td>
+<% if @expense_categories.blank? %>
+    <tr class="success">
+      <td colspan="3">No records found !</td>
     </tr>
+<% else %>
+    <% @expense_categories.each do |expense_category| %>
+        <tr>
+          <td><%= expense_category.name %></td>
+          <td><%= link_to "Edit", edit_expense_category_path(expense_category), remote: true, class: "btn btn-default btn-xs" %></td>
+          <td><%= link_to "Delete", expense_category_delete_path(expense_category), remote: true, class: "btn btn-danger btn-xs" %></td>
+        </tr>
+    <% end %>
 <% end %>
