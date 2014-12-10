@@ -15,12 +15,12 @@ class AccountingController < ApplicationController
     end
 
     if @records.blank?
-      @start_date = DateTime.now.strftime("%Y-%m-%d")
+      @start_date = DateTime.current.strftime("%Y-%m-%d")
     else
       @start_date = Record.where("account_id = #{current_account.id}").minimum(:updated_at).strftime("%Y-%m-%d")
     end
     if @records.blank?
-      @end_date = DateTime.now.strftime("%Y-%m-%d")
+      @end_date = DateTime.current.strftime("%Y-%m-%d")
     else
       @end_date = Record.where("account_id = #{current_account.id}").maximum(:updated_at).strftime("%Y-%m-%d")
     end
