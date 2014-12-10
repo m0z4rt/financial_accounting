@@ -14,6 +14,8 @@ gem 'devise'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+    :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 # Use certified to verify SSL certificates and provides certificate bundle in case OpenSSL cannot find one
 gem 'certified'
 # Use will_paginate for pagination

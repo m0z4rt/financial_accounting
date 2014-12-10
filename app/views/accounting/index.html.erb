@@ -4,6 +4,20 @@
     <%= link_to "New Expense", new_expense_path, remote: true, class: "btn btn-primary" %>
     <%= link_to "New Income Category", new_income_category_path, remote: true, class: "btn btn-primary" %>
     <%= link_to "New Expense Category", new_expense_category_path, remote: true, class: "btn btn-primary" %>
+    <%= form_tag('/accounting', :method => "get", id: "search-form", :class => "form-inline") do %>
+        <div class="input-daterange input-group" id="datepicker">
+          <span class="input-group-addon">From</span>
+          <%= text_field_tag :search_start_date, params[:search_start_date], :id => "datepicker", :value => @start_date, class: 'form-control' %>
+          <span class="input-group-addon">to</span>
+          <%= text_field_tag :search_end_date, params[:search_end_date], :id => "datepicker", :value => @end_date, class: 'form-control' %>
+        </div>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], placeholder: "Name or category", class: 'form-control' %>
+          <span class="input-group-btn">
+        <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+        </span>
+        </div>
+    <% end %>
   </div>
   <div class="new-record"></div>
   <table class="table table-bordered table-striped table-hover table-condensed">
@@ -44,3 +58,12 @@
     <div id="inner-category-modal" class="modal-content"></div>
   </div>
 </div>
+<script type="text/javascript">
+    $('.input-daterange').datepicker({
+        format: "yyyy-mm-dd",
+        weekStart: 1,
+        todayBtn: "linked",
+        autoclose: true,
+        todayHighlight: true
+    });
+</script>
