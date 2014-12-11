@@ -7,8 +7,8 @@ class AccountingController < ApplicationController
     search_start_date = params[:search_start_date]
     search_end_date = params[:search_end_date]
     if params[:search]
-      @records = Record.search(params[:search]).where("DATE(updated_at) >= ? AND DATE(updated_at) <= ?",
-          search_start_date, search_end_date).order("updated_at DESC").paginate(page: params[:page], per_page: 15)
+      @records = Record.search(params[:search]).where("DATE(updated_at) >= ? AND DATE(updated_at) <= ? AND account_id = ?",
+          search_start_date, search_end_date, current_account.id).order("updated_at DESC").paginate(page: params[:page], per_page: 15)
     else
       @records = Record.where(
           "account_id = #{current_account.id}").paginate(page: params[:page], per_page: 15)
