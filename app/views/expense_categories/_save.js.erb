@@ -1,7 +1,7 @@
-$("ul.errors").html("")
+$("ul.alert-error").html("")
 <% if @expense_category.errors.any? %>
 <% @expense_category.errors.full_messages.each do |message| %>
-$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+$("ul.alert-error").append($("<li />").html("<%= message.html_safe %>"))
 <% end %>
 <% else %>
 $(".category-index").html("<%= escape_javascript(render 'index') %>")

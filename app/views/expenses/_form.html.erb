@@ -1,5 +1,6 @@
 <%= bootstrap_form_for @expense, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8", remote: true do |f| %>
     <div class="modal-body">
+      <ul class="alert-error"></ul>
       <%= f.text_field :name %>
       <%= f.hidden_field :account_id %>
       <%= f.hidden_field :record_type, :value => "expense" %>
